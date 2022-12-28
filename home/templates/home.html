@@ -98,7 +98,7 @@ body p {
   <input type="file" class="my-pond mt-4" name="filepond" />
 
   <div class="text-center">
-    <button class="btn btn-success"  onclick="upload_file()"   >Upload File</button>
+    <button class="btn btn-success upload-btn">Upload File</button>
   </div>
 
   <div class="carad mt-3">
@@ -125,13 +125,31 @@ body p {
 
   <script>
     $(function () {
+      const pond = FilePond.create(document.querySelector('.my-pond'))
       $.fn.filepond.registerPlugin(FilePondPluginImagePreview, );
       $('.my-pond').filepond();
       $('.my-pond').filepond('allowMultiple', true);
       $('.my-pond').on('FilePond:addfile', function (e) {
         console.log('file added event', e);
       });
-    });
+      $('.upload-btn').click(function upload_files(){
+        var files= pond.getFiles();
+
+        var formdata= new FormData();
+        for (var i=0; i< files.length; i++){
+          formdata.append('files', files[i].file);
+        }
+        fetch('/handel/', {
+          method: 'POST',
+          headers: {'X-CSRFToken': "{{csrf_token}}"},
+          body: formdata,
+        }).then(res => res.json())
+        .then(result => {
+            console.log(result)
+        })
+      })
+     });
+
    </script>
 
 </body>
