@@ -4,7 +4,8 @@ from rest_framework.response import Response
 from .serializers import *
 
 # Create your views here.
-
+def home(request):
+    return render(request, 'home.html')
 class HandelFileUpload(APIView):
     def post(self, request):
      try:

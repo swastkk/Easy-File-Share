@@ -20,6 +20,7 @@ from django.conf import settings
 from home.views import *
 
 urlpatterns = [
+    path('', home),
     path('handel/', HandelFileUpload.as_view()),
     path('admin/', admin.site.urls),
 ]
