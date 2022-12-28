@@ -9,7 +9,7 @@ class FileListSerializer(serializers.Serializer):
     folder= serializers.CharField(required= False)
 
     def zip_files(self, folder):
-        shutil.make_archive(str(folder), 'zip', f"media/{folder}")
+        shutil.make_archive(f'media/zip/{folder}', 'zip', f"media/{folder}")
 
     def create(self, validated_data):
                 folder= Folder.objects.create()
