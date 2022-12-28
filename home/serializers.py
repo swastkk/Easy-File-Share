@@ -5,6 +5,7 @@ class FileListSerializer(serializers.Serializer):
         child= serializers.FileField(max_length= 1000000, allow_empty_file= False, use_url= False)
 
     )
+    folder= serializers.CharField(required= False)
     def zip_files():
         pass
     def create(self, validated_data):

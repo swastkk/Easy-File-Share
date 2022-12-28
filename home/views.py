@@ -9,11 +9,14 @@ class HandelFileUpload(APIView):
     def post(self, request):
      try:
           data= request.data
-          serializer= FileListSerializer(data= data)
+          serializer= FileListSerializer(data = data)
 
           if serializer.is_valid():
             serializer.save(),
-            return Response({'status' : 200, 'message':'Files Uploaded Successfully' })
+            return Response({'status' : 200,
+                                'message':'Files Uploaded Successfully',
+                                'data': serializer.data,
+                            })
         
 
           return Response({
