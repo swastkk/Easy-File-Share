@@ -10,6 +10,7 @@ def home(request):
 
 def download(request, uid):
     return render(request, 'download.html', context={'uid': uid})
+
 class HandelFileUpload(APIView):
     def post(self, request):
      try:
