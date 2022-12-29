@@ -107,7 +107,7 @@ body p {
 
         <div class="background">
             <center>
-              <button class="clipboard">Click me to copy current Url</button>
+              <button class="clipboard copy-btn">Click me to copy current Url</button>
               <p>Have you already clicked?</p>
             </center>
             </div>
@@ -124,7 +124,7 @@ body p {
 
 
   <script>
-      $(function main() {
+    $(function main() {
       $('.my-pond').filepond();
       $('.my-pond').filepond('allowMultiple', true);
       $('.my-pond').on('FilePond:addfile', function (e) {
@@ -148,9 +148,19 @@ body p {
         .then(result => {
             console.log(result)
 
-            url=''
+              url=`http://127.0.0.1:8000/download/${result.data.folder}`
         })
-      })
+      });
+      $('.copy-btn').click(function copyClip() {
+            console.log('copy url')
+        
+         
+            /* Copy the text inside the text field */
+            navigator.clipboard.writeText(url);
+
+            /* Alert the copied text */
+            alert("Copied the text: " + url);
+        })
      });
    </script>
 
