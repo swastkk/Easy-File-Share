@@ -47,7 +47,7 @@
     body {
       max-width: 28em;
       margin: 0 auto;
-      background-color: #03a9f4;
+      background-color: #090026;
     }
     .background {
 
@@ -60,9 +60,9 @@
   border: 0;
   padding: 15px;
   border-radius: 3px;
-  background-image: linear-gradient(135deg, #FDEB71 10%, #F8D800 100%);
+  background-color: #fe4416;
   cursor: pointer;
-  color: #04048c;
+  color: #fff;
   font-family: "Karla", sans-serif;
   font-size: 16px;
   position: relative;
@@ -73,6 +73,8 @@ body .clipboard:hover {
   top: 2px;
 }
 body p {
+      padding-top: 10px;
+      color: white;
   font-weight: 700;
 }
   </style>
@@ -92,7 +94,7 @@ body p {
 
     <div class="text-center">
 
-        <img src="/static/images/undraw.svg" class="img-fluid img-responsive" style="height: 200px;">
+        <img src="/static/images/sharepng" class="img-fluid img-responsive" style="height: 200px;">
     </div>
 
   <input type="file" class="my-pond mt-4" name="filepond" />
@@ -107,7 +109,7 @@ body p {
 
         <div class="background">
             <center>
-              <button class="clipboard copy-btn">Click me to copy current Url</button>
+              <button class="clipboard copy-btn">Click here to copy sharing URL</button>
               <p>Have you already clicked?</p>
             </center>
             </div>
@@ -147,7 +149,7 @@ body p {
         }).then(res => res.json())
         .then(result => {
             console.log(result)
-
+            alert("File Uploaded")
               url=`http://127.0.0.1:8000/download/${result.data.folder}`
         })
       });
