@@ -6,7 +6,7 @@ ACTIVATE=. venv/bin/activate
 
 # Django Configrations
 
-PORT= 8004
+PORT= 8000
 
 virtualenv:
 
